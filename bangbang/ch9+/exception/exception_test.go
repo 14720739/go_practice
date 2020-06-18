@@ -220,7 +220,7 @@ func F3() {
 	defer func() {
 		fmt.Println("No recover func here")
 	}()
-	panic("Error F3")
+	//	panic("Error F3")
 	fmt.Println("F3 function")
 }
 
