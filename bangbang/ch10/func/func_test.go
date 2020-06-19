@@ -32,6 +32,7 @@ func Test_func1(t *testing.T) {
 	t.Log(tsSF(10))
 }
 
+// Sum(ops ...int)代表参数ops是不固个定整数，参数的个数不固定
 func Sum(ops ...int) int {
 	ret := 0
 	for _, op := range ops {
