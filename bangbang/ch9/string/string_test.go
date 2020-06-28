@@ -20,6 +20,19 @@ func TestString(t *testing.T) {
 	t.Log(len(c))
 	t.Logf("中 unicode %x", c[0])
 	t.Logf("中 UTF8 %x", s)
+
+	k := "清"
+	// byte相当于c语言中的char
+	ak := []byte(k)
+	t.Logf("byte ak:=%x", ak)
+	t.Logf("len ak=%d", len(ak))
+	bk := []byte("我们是共产主义接班人")
+	unicode_k := []rune("我们是共产主义接班人")
+	t.Logf("The length of unicode_k is:%d", len(unicode_k))
+	// 赋值的时候不能用中文，否则会报错，容量超出限制，例如：ck:=[]byte{'a','c','中'}就是错误的
+	ck := []byte{'a', 'c', 'a'}
+	t.Logf("len of bk: %d, len of ck :%d", len(bk), len(ck))
+
 }
 
 func TestStringToRune(t *testing.T) {
@@ -79,4 +92,12 @@ UTF-8 是编码规则，将 Unicode 中字符的 ID 以某种方式进行编码�
 根据这个规则，拉丁文语系的字符编码一般情况下每个字符占用一个字节，而中文每个字符占用 3 个字节。
 
 广义的 Unicode 指的是一个标准，它定义了字符集及编码规则，即 Unicode 字符集和 UTF-8、UTF-16 编码等。
+*/
+
+/*
+string可以直接比较，而[]byte不可以，所以[]byte不可以当map的key值。
+因为无法修改string中的某个字符，需要粒度小到操作一个字符时，用[]byte。
+string值不可为nil，所以如果你想要通过返回nil表达额外的含义，就用[]byte。
+[]byte切片这么灵活，想要用切片的特性就用[]byte。
+需要大量字符串处理的时候用[]byte，性能好很多。
 */
