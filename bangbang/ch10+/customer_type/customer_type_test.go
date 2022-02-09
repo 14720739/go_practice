@@ -8,6 +8,8 @@ import (
 
 type IntConv func(op int) int
 
+// （inner IntConv）是输入参数的类型，以函数为输入参数类型；IntConv是返回值的类型，以函数作为返回值的类型
+
 func timeSpent(inner IntConv) IntConv {
 	return func(n int) int {
 		start := time.Now()
